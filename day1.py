@@ -18,6 +18,17 @@ class Lock:
     else:
       self.rotate_left(clicks)
 
+  def count_full_rotations(self, rotation):
+    clicks = int(rotation[1:])
+    full_rotations = 0
+
+    if rotation[0] == 'R':
+      full_rotations = (self.position + clicks) // self.size
+    else:
+      if self.position - clicks <= 0:
+        full_rotations = 1 + ((self.position - clicks) // self.size)
+
+    return full_rotations
 
 input = open('./inputs/day1_part1.txt', 'r') # question
 password = 0  # answer
@@ -29,4 +40,14 @@ for rotation in rotations:
   if lock.position == 0:
     password += 1
 
-print("DAY 1.1\n\npassword: " + str(password))
+print("DAY 1.1\npassword: " + str(password) + "\n")
+
+##### DAY 2 #####
+password = 0
+
+lock2 = Lock(100, 50)
+for rotation in rotations:
+  password += lock2.count_full_rotations(rotation)
+  lock2.process_rotation(rotation)
+
+print("DAY 1.2\npassword: " + str(password))
