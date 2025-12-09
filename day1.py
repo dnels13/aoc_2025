@@ -26,9 +26,9 @@ class Lock:
       full_rotations = (self.position + clicks) // self.size
     else:
       if self.position - clicks <= 0:
-        full_rotations = 1 + ((self.position - clicks) // self.size)
+        full_rotations = (self.position - clicks) // self.size
 
-    return full_rotations
+    return abs(full_rotations)
 
 input = open('./inputs/day1_part1.txt', 'r') # question
 password = 0  # answer
@@ -42,7 +42,7 @@ for rotation in rotations:
 
 print("DAY 1.1\npassword: " + str(password) + "\n")
 
-##### DAY 2 #####
+##### PART 2 #####
 password = 0
 
 lock2 = Lock(100, 50)
