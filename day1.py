@@ -18,6 +18,7 @@ class Lock:
     else:
       self.rotate_left(clicks)
 
+  # Still broken :(
   def count_full_rotations(self, rotation):
     clicks = int(rotation[1:])
     full_rotations = 0
@@ -30,7 +31,7 @@ class Lock:
 
     return abs(full_rotations)
 
-input = open('./inputs/day1_part1.txt', 'r') # question
+input = open('./inputs/day1.txt', 'r') # question
 password = 0  # answer
 
 rotations = input.read().split("\n")
